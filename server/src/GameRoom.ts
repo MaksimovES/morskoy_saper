@@ -126,6 +126,47 @@ export class GameRoom {
         return { success: true };
       }
     }
+
+    const disconnectedIndexByName = this.players.findIndex(
+      p => p?.name === playerName && p.disconnectedAt !== null
+    );
+    const disconnectedPlayerByName =
+      disconnectedIndexByName >= 0 ? this.players[disconnectedIndexByName] : null;
+    if (disconnectedPlayerByName) {
+      disconnectedPlayerByName.markConnected(socket.id);
+      socket.emit('room_joined', {
+        roomId: this.roomId,
+        playerId: disconnectedPlayerByName.id,
+        playerNumber: (disconnectedIndexByName + 1) as 1 | 2,
+        waitingForOpponent: this.players.some(p => p?.disconnectedAt !== null) ||
+          this.players[0] === null || this.players[1] === null,
+      } as RoomJoinedPayload);
+
+      const opponentIndex = disconnectedIndexByName === 0 ? 1 : 0;
+      const opponent = this.players[opponentIndex];
+      if (opponent) {
+        this.io.to(opponent.socketId).emit('opponent_reconnected', {
+          opponentName: disconnectedPlayerByName.name,
+        } as OpponentReconnectedPayload);
+      }
+
+      this.pendingScouts = this.pendingScouts.map(scout =>
+        scout.playerId === disconnectedPlayerByName.id
+          ? { ...scout, socketId: socket.id }
+          : scout
+      );
+
+      this.clearReconnectTimer();
+      if (this.players.every(p => p && p.disconnectedAt === null) && this.phaseBeforeDisconnect) {
+        this.phase = this.phaseBeforeDisconnect;
+        if (this.phase === 'battle') {
+          this.resumeTurnTimer();
+        }
+        this.phaseBeforeDisconnect = null;
+      }
+      this.syncStateToPlayer(disconnectedPlayerByName);
+      return { success: true };
+    }
     
     // Проверяем, есть ли место
     const emptySlot = this.players.findIndex(p => p === null);

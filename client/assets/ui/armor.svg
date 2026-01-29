@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <defs>
+    <linearGradient id="armorGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ffd700"/>
+      <stop offset="50%" style="stop-color:#f4a500"/>
+      <stop offset="100%" style="stop-color:#cc8800"/>
+    </linearGradient>
+    <filter id="armorShadow">
+      <feDropShadow dx="0" dy="2" stdDeviation="1" flood-color="#000" flood-opacity="0.3"/>
+    </filter>
+  </defs>
+  <!-- )8B -->
+  <path d="M 20 4 L 34 10 L 34 22 C 34 30 28 36 20 38 C 12 36 6 30 6 22 L 6 10 Z" 
+        fill="url(#armorGradient)" 
+        stroke="#aa7700" 
+        stroke-width="2"
+        filter="url(#armorShadow)"/>
+  <!-- 25740 2 F5=B@5 -->
+  <polygon points="20,12 22,18 28,18 23,22 25,28 20,25 15,28 17,22 12,18 18,18" 
+           fill="#fff" 
+           opacity="0.8"/>
+</svg>

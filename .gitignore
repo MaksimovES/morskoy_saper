@@ -1,0 +1,42 @@
+# Зависимости
+node_modules/
+package-lock.json
+
+# Сборка
+dist/
+release/
+*.exe
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Логи
+logs/
+*.log
+npm-debug.log*
+
+# Окружение
+.env
+.env.local
+.env.*.local
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Временные файлы
+*.tmp
+*.temp
+.cache/
+
+# Electron
+.electron/
+
+# TypeScript
+*.tsbuildinfo
+
+# Markdown
+*.md

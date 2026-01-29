@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 40">
+  <defs>
+    <linearGradient id="scoutGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00ff88"/>
+      <stop offset="100%" style="stop-color:#00aa55"/>
+    </linearGradient>
+    <filter id="scoutGlow">
+      <feGaussianBlur stdDeviation="1" result="coloredBlur"/>
+      <feMerge>
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  <!-- ;07 - 2=5H=OO D>@<0 -->
+  <ellipse cx="20" cy="20" rx="16" ry="10" fill="none" stroke="url(#scoutGradient)" stroke-width="2"/>
+  <!-- @0G>: -->
+  <circle cx="20" cy="20" r="6" fill="url(#scoutGradient)" filter="url(#scoutGlow)"/>
+  <circle cx="20" cy="20" r="3" fill="#0f0f23"/>
+  <!-- ;8: -->
+  <circle cx="22" cy="18" r="2" fill="white" opacity="0.8"/>
+  <!-- CG8 7@5=8O -->
+  <line x1="4" y1="20" x2="0" y2="20" stroke="#00ff88" stroke-width="1" opacity="0.5"/>
+  <line x1="36" y1="20" x2="40" y2="20" stroke="#00ff88" stroke-width="1" opacity="0.5"/>
+  <line x1="8" y1="12" x2="4" y2="8" stroke="#00ff88" stroke-width="1" opacity="0.3"/>
+  <line x1="32" y1="12" x2="36" y2="8" stroke="#00ff88" stroke-width="1" opacity="0.3"/>
+  <line x1="8" y1="28" x2="4" y2="32" stroke="#00ff88" stroke-width="1" opacity="0.3"/>
+  <line x1="32" y1="28" x2="36" y2="32" stroke="#00ff88" stroke-width="1" opacity="0.3"/>
+</svg>

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://raw.githubusercontent.com/electron-userland/electron-builder/master/packages/app-builder-lib/scheme.json",
+  "appId": "com.morskoysaper.game",
+  "productName": "Морской Сапёр",
+  "copyright": "Copyright © 2024",
+  "directories": {
+    "output": "release",
+    "buildResources": "assets"
+  },
+  "files": ["dist/**/*", "dist-web/**/*", "assets/**/*", "package.json"],
+  "extraResources": [
+    {
+      "from": "assets",
+      "to": "assets",
+      "filter": ["**/*"]
+    }
+  ],
+  "win": {
+    "target": [
+      {
+        "target": "nsis",
+        "arch": ["x64"]
+      },
+      {
+        "target": "portable",
+        "arch": ["x64"]
+      }
+    ],
+    "artifactName": "${productName}-${version}-${arch}.${ext}"
+  },
+  "nsis": {
+    "oneClick": false,
+    "perMachine": false,
+    "allowToChangeInstallationDirectory": true,
+    "deleteAppDataOnUninstall": true,
+    "createDesktopShortcut": true,
+    "createStartMenuShortcut": true,
+    "shortcutName": "Морской Сапёр"
+  },
+  "portable": {
+    "artifactName": "${productName}-${version}-Portable.${ext}"
+  },
+  "mac": {
+    "target": ["dmg", "zip"],
+    "icon": "assets/icon.icns",
+    "category": "public.app-category.games"
+  },
+  "linux": {
+    "target": ["AppImage", "deb"],
+    "icon": "assets/icon.png",
+    "category": "Game"
+  }
+}
